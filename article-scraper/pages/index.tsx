@@ -54,16 +54,9 @@ export default function Home() {
       retrievedArticles.map((a, i) => {
         if (i <= 10) {
           return (
-            <div>
+            <div key={a.title.slice(5) + i}>
               <div>{a.site}</div>
-              <Article
-                key={a.title.slice(5) + i}
-                title={a.title}
-                url={a.url}
-                sitename={a.sitename}
-                details={a.details}
-                id={i}
-              />
+              <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} />
               {/* <button className="bg-orange-500 rounded p-4" data-key={i} data-href={a.url} onClick={getPost}>
                 Get Post
               </button> */}
@@ -77,7 +70,7 @@ export default function Home() {
       });
 
     setFinalArticles(toComponent);
-  }, [fetched]);
+  }, [fetched, retrievedArticles]);
 
   console.log(retrievedArticles, fetched);
 
