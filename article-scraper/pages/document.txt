@@ -1,0 +1,18 @@
+
+--What I want to happen--
+
+#1 Click on Article
+
+#2 get the href and give to the the backend
+
+#3 the backend takes the href and returns the article & image
+
+#4 They are displayed on the frontend in a react component
+
+
+
+
+// destructoid -
+// "entry-content"
+// "post-thumbnail"
+// "primis-player" - <p></p>
