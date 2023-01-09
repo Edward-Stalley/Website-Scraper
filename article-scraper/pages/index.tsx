@@ -18,7 +18,7 @@ export default function Home() {
   // const [urls, setUrls] = useState<Object>([]);
 
   const getUrl = async (url: string) => {
-    const res = await fetch(`http://localhost:3000/api/${url}`);
+    const res = await fetch(`/api/${url}`);
     const { articles } = await res.json();
     setRetrievedArticles(articles);
     setFetched((fetched) => !fetched);
@@ -54,15 +54,17 @@ export default function Home() {
       retrievedArticles.map((a, i) => {
         if (i <= 10) {
           return (
-            <div key={a.title.slice(5) + i}>
-              <div>{a.site}</div>
-              <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} />
-              {/* <button className="bg-orange-500 rounded p-4" data-key={i} data-href={a.url} onClick={getPost}>
+            <div className="" key={a.title.slice(5) + i}>
+              <div className="bg-orange-200 auto-cols-min justify-center items-center  rounded-xl m-5">
+                {/* <div>{a.site}</div> */}
+                <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} />
+                {/* <button className="bg-orange-500 rounded p-4" data-key={i} data-href={a.url} onClick={getPost}>
                 Get Post
               </button> */}
-              <button className="bg-orange-500 rounded p-4" data-key={i} data-href={a.url} onClick={handler}>
-                Handler
-              </button>
+                {/* <button className="bg-orange-500 rounded p-4" data-key={i} data-href={a.url} onClick={handler}>
+                  Handler
+                </button> */}
+              </div>
             </div>
           );
         }
@@ -76,10 +78,10 @@ export default function Home() {
 
   return (
     <>
-      <div className="bg-slate-900  p-20">
-        <h1 className="text-6xl pb-4 ">Gaming News</h1>
-        <div className="  flex-col flex gap-6 justify-center items-center">
-          <div className="grid grid-cols-3 grid-rows-2 gap-4">
+      <div className="bg-slate-900  justify-center items-center p-20 flex flex-col">
+        <h1 className="sm:text-4xl md:text-6xl xl:text-6-xl text-4xl pb-10 text-slate-100">Gaming News</h1>
+        <div className="  flex-col flex gap-6 justify-center items-center pb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-3  grid-rows-2 gap-4">
             <button
               onClick={() => {
                 getUrl("giantbomb");
@@ -92,7 +94,7 @@ export default function Home() {
               onClick={() => {
                 getUrl("rockpapershotgun");
               }}
-              className="bg-blue-400 rounded-xl  p-5  hover:bg-slate-600"
+              className="bg-blue-400 col-span-2  sm:col-span-1 rounded-xl  p-5  hover:bg-slate-600"
             >
               Rock Paper Shotgun
             </button>
@@ -100,7 +102,7 @@ export default function Home() {
               onClick={() => {
                 getUrl("destructoid");
               }}
-              className="rounded-xl p-5  bg-slate-800 hover:bg-slate-600"
+              className="rounded-xl p-5  col-span-2  sm:col-span-1  bg-slate-800 hover:bg-slate-600"
             >
               IGN(not)
             </button>
@@ -121,10 +123,9 @@ export default function Home() {
               The Escapist
             </button>
           </div>
-
-          <div className="bg-orange-200 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4  xl:grid-cols-5 auto-cols-min  h-fit min-w-full justify-center items-center  rounded-xl m-5">
-            <> {finalArticles}</>
-          </div>
+        </div>
+        <div>
+          <div className="grid grid-cols-2"> {finalArticles}</div>
         </div>
       </div>
     </>
