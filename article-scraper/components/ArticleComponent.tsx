@@ -17,12 +17,12 @@ export default function ArticleComponent(props: {
 
   return (
     <div className="flex justify-center items-center p-4 ">
-      <div className="cursor-pointer hover:text-slate-900 pointer-cursor hover:bg-orange-100 bg-slate-900 p-5 text-2sm flex-col flex justify-center items-center w-56 h-56 rounded-xl">
+      <div className="cursor-pointer text-slate-50 hover:text-slate-800 pointer-cursor hover:bg-orange-100 bg-slate-900 p-5 text-2sm flex-col flex justify-center items-center w-56 h-56 rounded-xl">
         <h2 className="text-grey-100 ">{props.title}</h2>
         {/* <h4>{props.id}</h4> */}
-        {/* <button onClick={() => handleClick(props.url)} className="bg-orange-400 p-2 rounded-xl">
+        <button onClick={() => handleClick(props.url)} className="bg-orange-400 p-2 rounded-xl">
           Read
-        </button> */}
+        </button>
       </div>
     </div>
   );

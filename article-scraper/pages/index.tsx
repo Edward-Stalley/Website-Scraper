@@ -15,6 +15,8 @@ export default function Home() {
   const [finalArticles, setFinalArticles] = useState<Object>([]);
   const [fetched, setFetched] = useState(false);
   const [href, setHref] = useState("");
+  const [post, setPost] = useState("");
+  const [loading, setLoading] = useState(false);
   // const [urls, setUrls] = useState<Object>([]);
 
   const getUrl = async (url: string) => {
@@ -38,15 +40,27 @@ export default function Home() {
 
   const handler = function (e: { target: any }) {
     const href = e.target.getAttribute("data-href");
-    console.log(href);
+    // console.log(href);
     setHref(href);
   };
 
-  //
-  // const getPost = async (href: string) => {
-  //   const res = await fetch(`http://www.destructoid.com`);
-  //   console.log(href);
-  // };
+  useEffect(() => {
+    setLoading(true);
+    fetch(href)
+      .then((res) => res.json())
+      .then((data) => {
+        setPost(data);
+        setLoading(false);
+        console.log("post", post);
+      });
+  }, [href, loading]);
+
+  const getHref = async (href: string) => {
+    // const res = await fetch(href).then((res)=>res.json().then((data)=>{setPost(data)})
+    setHref(href);
+    setLoading(true);
+    console.log("href", href);
+  };
 
   useEffect(() => {
     const toComponent =
@@ -58,9 +72,14 @@ export default function Home() {
               <div className="bg-orange-200 auto-cols-min justify-center items-center  rounded-xl m-5">
                 {/* <div>{a.site}</div> */}
                 <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} />
-                {/* <button className="bg-orange-500 rounded p-4" data-key={i} data-href={a.url} onClick={getPost}>
-                Get Post
-              </button> */}
+                <button
+                  className="bg-orange-500 rounded p-4"
+                  data-key={i}
+                  data-href={a.url}
+                  onClick={() => getHref(a.url)}
+                >
+                  Get Post
+                </button>
                 {/* <button className="bg-orange-500 rounded p-4" data-key={i} data-href={a.url} onClick={handler}>
                   Handler
                 </button> */}
@@ -74,7 +93,7 @@ export default function Home() {
     setFinalArticles(toComponent);
   }, [fetched, retrievedArticles]);
 
-  console.log(retrievedArticles, fetched);
+  // console.log(retrievedArticles, fetched);
 
   return (
     <>
