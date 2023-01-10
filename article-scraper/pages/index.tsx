@@ -7,6 +7,7 @@ import { useState, useEffect, use } from "react";
 import { slice } from "cheerio/lib/api/traversing";
 import cheerio, { load } from "cheerio";
 import { NextApiRequest, NextApiResponse } from "next/dist/shared/lib/utils";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -44,23 +45,32 @@ export default function Home() {
     setHref(href);
   };
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(href)
-      .then((res) => res.json())
-      .then((data) => {
-        setPost(data);
-        setLoading(false);
-        console.log("post", post);
-      });
-  }, [href, loading]);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetch(href)
+  //     .then((res) => )
+  //     .then((data) => {
+  //       setPost(data);
+  //       setLoading(false);
+  //       console.log("post", post);
+  //     });
+  // }, [href, loading]);
 
-  const getHref = async (href: string) => {
-    // const res = await fetch(href).then((res)=>res.json().then((data)=>{setPost(data)})
-    setHref(href);
+  const getHref = async () => {
     setLoading(true);
-    console.log("href", href);
+    const res = await fetch(`/api/getArticles/${href}`);
+    // const res = await fetch(`/api/${url}`);
+    const { post } = await res.json();
+    setPost(post);
+    setLoading(false);
   };
+
+  // const getHref = async (href: string) => {
+  //   // const res = await fetch(href).then((res)=>res.json().then((data)=>{setPost(data)})
+  //   setHref(href);
+  //   setLoading(true);
+  //   console.log("href", href);
+  // };
 
   useEffect(() => {
     const toComponent =
@@ -69,17 +79,23 @@ export default function Home() {
         if (i <= 10) {
           return (
             <div className="" key={a.title.slice(5) + i}>
-              <div className="bg-orange-200 auto-cols-min justify-center items-center  rounded-xl m-5">
-                {/* <div>{a.site}</div> */}
-                <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} />
-                <button
+              <div className="bg-orange-200 auto-cols-min h-70 justify-center items-center  rounded-xl m-5">
+                {/* <div>{a.img}</div> */}
+                <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} />
+                <Link
+                  className="bg-orange-300 text-slate-800 text-xl  p-3 rounded flex justify-center hover:bg-orange-400"
+                  href={a.url}
+                >
+                  Read
+                </Link>
+                {/* <button
                   className="bg-orange-500 rounded p-4"
                   data-key={i}
                   data-href={a.url}
-                  onClick={() => getHref(a.url)}
+                  onClick={() => setHref(a.url)}
                 >
                   Get Post
-                </button>
+                </button> */}
                 {/* <button className="bg-orange-500 rounded p-4" data-key={i} data-href={a.url} onClick={handler}>
                   Handler
                 </button> */}
