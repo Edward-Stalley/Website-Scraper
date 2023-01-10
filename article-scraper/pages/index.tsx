@@ -45,17 +45,6 @@ export default function Home() {
     setHref(href);
   };
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   fetch(href)
-  //     .then((res) => )
-  //     .then((data) => {
-  //       setPost(data);
-  //       setLoading(false);
-  //       console.log("post", post);
-  //     });
-  // }, [href, loading]);
-
   const getHref = async () => {
     setLoading(true);
     const res = await fetch(`/api/getArticles/${href}`);
@@ -65,12 +54,9 @@ export default function Home() {
     setLoading(false);
   };
 
-  // const getHref = async (href: string) => {
-  //   // const res = await fetch(href).then((res)=>res.json().then((data)=>{setPost(data)})
-  //   setHref(href);
-  //   setLoading(true);
-  //   console.log("href", href);
-  // };
+  const getArticleBody = async (url: string) => {
+    const res = await fetch(`/api/puppeteer/rockpapershotgun`);
+  };
 
   useEffect(() => {
     const toComponent =
@@ -96,9 +82,16 @@ export default function Home() {
                 >
                   Get Post
                 </button> */}
-                {/* <button className="bg-orange-500 rounded p-4" data-key={i} data-href={a.url} onClick={handler}>
+                <button
+                  className="bg-orange-500 rounded p-4"
+                  data-key={i}
+                  data-href={a.url}
+                  onClick={() => {
+                    getArticleBody(a.url);
+                  }}
+                >
                   Handler
-                </button> */}
+                </button>
               </div>
             </div>
           );
@@ -166,3 +159,21 @@ export default function Home() {
     </>
   );
 }
+
+// const getHref = async (href: string) => {
+//   // const res = await fetch(href).then((res)=>res.json().then((data)=>{setPost(data)})
+//   setHref(href);
+//   setLoading(true);
+//   console.log("href", href);
+// };
+
+// useEffect(() => {
+//   setLoading(true);
+//   fetch(href)
+//     .then((res) => )
+//     .then((data) => {
+//       setPost(data);
+//       setLoading(false);
+//       console.log("post", post);
+//     });
+// }, [href, loading]);
