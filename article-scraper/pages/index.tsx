@@ -49,14 +49,15 @@ export default function Home() {
               <div className="bg-orange-200 auto-cols-min h-70 justify-center items-center  rounded-xl m-5">
                 <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} />
                 <Link
-                  className="bg-orange-300 text-slate-800 text-xl  p-3 rounded flex justify-center hover:bg-orange-400"
+                  className="bg-orange-300 text-slate-800 text-xl  p-3  rounded-b-xl flex justify-center hover:bg-orange-400"
                   href={a.url}
                 >
                   Read
                 </Link>
-
+                {/* Need to implement getting the body from article */}
+                {/* 
                 <button
-                  className="bg-orange-500 rounded flex  p-4"
+                  className="bg-orange-500  w-full flex justify-center p-4 rounded-b-xl"
                   data-key={i}
                   data-href={a.url}
                   onClick={() => {
@@ -64,7 +65,7 @@ export default function Home() {
                   }}
                 >
                   Handler
-                </button>
+                </button> */}
               </div>
             </div>
           );
@@ -81,35 +82,35 @@ export default function Home() {
         <h1 className="sm:text-4xl md:text-6xl xl:text-6-xl text-4xl pb-10 text-slate-100">Gaming News</h1>
         <div className="  flex-col flex gap-6 justify-center items-center pb-10">
           <div className="grid grid-cols-1 sm:grid-cols-3  grid-rows-2 gap-4">
-            <button
+            {/* <button
               onClick={() => {
                 getUrl("giantbomb");
               }}
               className="rounded-xl p-5 col-span-2 bg-red-400 hover:bg-slate-600"
             >
               GiantBomb
-            </button>
+            </button> */}
             <button
               onClick={() => {
                 getUrl("rockpapershotgun");
               }}
-              className="bg-blue-400 col-span-2  sm:col-span-1 rounded-xl  p-5  hover:bg-slate-600"
+              className="bg-blue-400 col-span-2  sm:col-span-2 rounded-xl  p-5  hover:bg-slate-600"
             >
               Rock Paper Shotgun
             </button>
             <button
               onClick={() => {
-                getUrl("destructoid");
+                getUrl("ign");
               }}
-              className="rounded-xl p-5  col-span-2  sm:col-span-1  bg-slate-800 hover:bg-slate-600"
+              className="rounded-xl p-5  col-span-2 bg-red-400  sm:col-span-1   hover:bg-slate-600"
             >
-              IGN(not)
+              IGN
             </button>
             <button
               onClick={() => {
                 getUrl("destructoid");
               }}
-              className="rounded-xl p-5 col-span-2  bg-green-400 hover:bg-slate-600"
+              className="rounded-xl p-5 col-span-2 sm:col-span-1  bg-green-400 hover:bg-slate-600"
             >
               Destructoid
             </button>
