@@ -27,31 +27,12 @@ export default function Home() {
     setFetched((fetched) => !fetched);
   };
 
-  // New Logic
-
   const urls: any[] = [];
   const url = Array.isArray(retrievedArticles) ? retrievedArticles.forEach((a: any) => urls.push(a.url)) : [];
-  // console.log("array", urls);
-
-  // click on button
-  // get an id for that button from 1 -10
-  // go through array
-  // if id matches then fetch that url
-  // else return
 
   const handler = function (e: { target: any }) {
     const href = e.target.getAttribute("data-href");
-    // console.log(href);
     setHref(href);
-  };
-
-  const getHref = async () => {
-    setLoading(true);
-    const res = await fetch(`/api/getArticles/${href}`);
-    // const res = await fetch(`/api/${url}`);
-    const { post } = await res.json();
-    setPost(post);
-    setLoading(false);
   };
 
   const getArticleBody = async (url: string) => {
@@ -66,7 +47,6 @@ export default function Home() {
           return (
             <div className="" key={a.title.slice(5) + i}>
               <div className="bg-orange-200 auto-cols-min h-70 justify-center items-center  rounded-xl m-5">
-                {/* <div>{a.img}</div> */}
                 <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} />
                 <Link
                   className="bg-orange-300 text-slate-800 text-xl  p-3 rounded flex justify-center hover:bg-orange-400"
@@ -74,16 +54,9 @@ export default function Home() {
                 >
                   Read
                 </Link>
-                {/* <button
-                  className="bg-orange-500 rounded p-4"
-                  data-key={i}
-                  data-href={a.url}
-                  onClick={() => setHref(a.url)}
-                >
-                  Get Post
-                </button> */}
+
                 <button
-                  className="bg-orange-500 rounded p-4"
+                  className="bg-orange-500 rounded flex  p-4"
                   data-key={i}
                   data-href={a.url}
                   onClick={() => {
@@ -101,8 +74,6 @@ export default function Home() {
 
     setFinalArticles(toComponent);
   }, [fetched, retrievedArticles]);
-
-  // console.log(retrievedArticles, fetched);
 
   return (
     <>
@@ -159,21 +130,3 @@ export default function Home() {
     </>
   );
 }
-
-// const getHref = async (href: string) => {
-//   // const res = await fetch(href).then((res)=>res.json().then((data)=>{setPost(data)})
-//   setHref(href);
-//   setLoading(true);
-//   console.log("href", href);
-// };
-
-// useEffect(() => {
-//   setLoading(true);
-//   fetch(href)
-//     .then((res) => )
-//     .then((data) => {
-//       setPost(data);
-//       setLoading(false);
-//       console.log("post", post);
-//     });
-// }, [href, loading]);

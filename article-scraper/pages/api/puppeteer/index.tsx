@@ -16,10 +16,10 @@ async function start() {
 
   //   ******Loop through each article
 
-  let items: Array<[]> = [];
+  let items = [];
 
   for (const postHandle of postHandles) {
-    let title: string | undefined | null = "Null";
+    let title: string | null | undefined = "Null";
     let img: string | undefined | null = "Null";
 
     try {
@@ -34,9 +34,11 @@ async function start() {
     } catch (err) {}
 
     if (title != "Null") {
-      items.push({ title, img });
+      // items.push({ title, img });
+      console.log(typeof title, title, typeof img, img);
+      items.push({ title: title, img: img });
     }
-    // console.log(title, img);
+    // console.log(title, img);{}
 
     console.log(items);
   }
