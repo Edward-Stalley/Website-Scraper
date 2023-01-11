@@ -78,23 +78,18 @@ export default function Home() {
 
   return (
     <>
-      <div className="bg-slate-900  justify-center items-center p-20 flex flex-col">
-        <h1 className="sm:text-4xl md:text-6xl xl:text-6-xl text-4xl pb-10 text-slate-100">Gaming News</h1>
-        <div className="  flex-col flex gap-6 justify-center items-center pb-10">
-          <div className="grid grid-cols-1 sm:grid-cols-3  grid-rows-2 gap-4">
-            {/* <button
-              onClick={() => {
-                getUrl("giantbomb");
-              }}
-              className="rounded-xl p-5 col-span-2 bg-red-400 hover:bg-slate-600"
-            >
-              GiantBomb
-            </button> */}
+      <div className="bg-slate-800 justify-center items-center p-20 flex flex-col">
+        <div>
+          <h1 className="   sm:text-4xl md:text-6xl xl:text-6-xl text-4xl pb-10 text-slate-100">Gaming News</h1>
+        </div>
+
+        <div className=" flex-col flex gap-6 justify-center items-center p-2">
+          <div className="  justify-center items-center grid grid-cols-2 sm:grid-cols-3  grid-rows-2 gap-4">
             <button
               onClick={() => {
                 getUrl("rockpapershotgun");
               }}
-              className="bg-blue-400 col-span-2  sm:col-span-2 rounded-xl  p-5  hover:bg-slate-600"
+              className="bg-blue-400 p-2 sm:col-span-2 rounded-xl  sm:p-5  hover:bg-slate-600"
             >
               Rock Paper Shotgun
             </button>
@@ -102,7 +97,7 @@ export default function Home() {
               onClick={() => {
                 getUrl("ign");
               }}
-              className="rounded-xl p-5  col-span-2 bg-red-400  sm:col-span-1   hover:bg-slate-600"
+              className="rounded-xl p-5   bg-red-400    hover:bg-slate-600"
             >
               IGN
             </button>
@@ -110,7 +105,7 @@ export default function Home() {
               onClick={() => {
                 getUrl("destructoid");
               }}
-              className="rounded-xl p-5 col-span-2 sm:col-span-1  bg-green-400 hover:bg-slate-600"
+              className="rounded-xl p-5  bg-green-400 hover:bg-slate-600"
             >
               Destructoid
             </button>
@@ -118,7 +113,7 @@ export default function Home() {
               onClick={() => {
                 getUrl("escapist");
               }}
-              className="rounded-xl p-5 col-span-2 bg-yellow-400  hover:bg-slate-600"
+              className="rounded-xl p-5 sm:col-span-2  bg-yellow-400  hover:bg-slate-600"
             >
               The Escapist
             </button>
