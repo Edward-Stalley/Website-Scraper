@@ -27,31 +27,12 @@ export default function Home() {
     setFetched((fetched) => !fetched);
   };
 
-  // New Logic
-
   const urls: any[] = [];
   const url = Array.isArray(retrievedArticles) ? retrievedArticles.forEach((a: any) => urls.push(a.url)) : [];
-  // console.log("array", urls);
-
-  // click on button
-  // get an id for that button from 1 -10
-  // go through array
-  // if id matches then fetch that url
-  // else return
 
   const handler = function (e: { target: any }) {
     const href = e.target.getAttribute("data-href");
-    // console.log(href);
     setHref(href);
-  };
-
-  const getHref = async () => {
-    setLoading(true);
-    const res = await fetch(`/api/getArticles/${href}`);
-    // const res = await fetch(`/api/${url}`);
-    const { post } = await res.json();
-    setPost(post);
-    setLoading(false);
   };
 
   const getArticleBody = async (url: string) => {
@@ -65,25 +46,27 @@ export default function Home() {
         if (i <= 10) {
           return (
             <div className="" key={a.title.slice(5) + i}>
-              <div className="bg-orange-200 auto-cols-min h-70 justify-center items-center  rounded-xl m-5">
-                {/* <div>{a.img}</div> */}
-                <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} />
-                <Link
-                  className="bg-orange-300 text-slate-800 text-xl  p-3 rounded flex justify-center hover:bg-orange-400"
-                  href={a.url}
+              <Link href={a.url} className="">
+                <div
+                  className={` ${a.url.includes("destructoid") ? "bg-green-400 " : "b-blue-200"}
+                  ${a.url.includes("rockpapershotgun") ? "bg-blue-400 " : "b-blue-200"}
+                  ${a.url.includes("escapist") ? "bg-orange-400 " : "b-blue-200"}
+                  ${a.url.includes("ign") ? "bg-red-400 " : "b-blue-200"}
+
+
+                  hover:bg-blue-200 bg-orange-200 auto-cols-min h-30  justify-center items-center  rounded-xl m-5`}
                 >
-                  Read
-                </Link>
-                {/* <button
-                  className="bg-orange-500 rounded p-4"
-                  data-key={i}
-                  data-href={a.url}
-                  onClick={() => setHref(a.url)}
-                >
-                  Get Post
-                </button> */}
+                  <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} />
+                  {/* <Link */}
+                  {/* // className="bg-orange-300 text-slate-800 text-xl p-3 rounded-b-xl flex justify-center
+                  hover:bg-orange-400" // href={a.url} */}
+                  {/* > */}
+                  {/* Read */}
+                  {/* </Link> */}
+                  {/* Need to implement getting the body from article */}
+                  {/* 
                 <button
-                  className="bg-orange-500 rounded p-4"
+                  className="bg-orange-500  w-full flex justify-center p-4 rounded-b-xl"
                   data-key={i}
                   data-href={a.url}
                   onClick={() => {
@@ -91,8 +74,14 @@ export default function Home() {
                   }}
                 >
                   Handler
-                </button>
-              </div>
+                </button> */}
+                  {/* <div className="flex justify-center    ">
+                    {(a.url.includes("rockpapershotgun") && "Rock Paper Shotgun") ||
+                      (a.url.includes("destructoid") && "Destructoid") ||
+                      (a.url.includes("destructoid") && "Destructoid")}
+                  </div> */}
+                </div>
+              </Link>
             </div>
           );
         }
@@ -102,43 +91,38 @@ export default function Home() {
     setFinalArticles(toComponent);
   }, [fetched, retrievedArticles]);
 
-  // console.log(retrievedArticles, fetched);
-
   return (
     <>
-      <div className="bg-slate-900  justify-center items-center p-20 flex flex-col">
-        <h1 className="sm:text-4xl md:text-6xl xl:text-6-xl text-4xl pb-10 text-slate-100">Gaming News</h1>
-        <div className="  flex-col flex gap-6 justify-center items-center pb-10">
-          <div className="grid grid-cols-1 sm:grid-cols-3  grid-rows-2 gap-4">
-            <button
-              onClick={() => {
-                getUrl("giantbomb");
-              }}
-              className="rounded-xl p-5 col-span-2 bg-red-400 hover:bg-slate-600"
-            >
-              GiantBomb
-            </button>
+      <div className="bg-slate-800 justify-center items-center p-20 flex flex-col">
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="   sm:text-4xl md:text-6xl xl:text-6-xl text-4xl pb-10 text-slate-100">Gaming News</h1>
+          <h5 className="   sm:text-lg md:text-1xl xl:text-4-xl text-sm pb-2 text-slate-100">
+            Click A Button for Recent News
+          </h5>
+        </div>
+        <div className=" flex-col flex gap-6 justify-center items-center p-2">
+          <div className="  justify-center items-center grid grid-cols-2 sm:grid-cols-3  grid-rows-2 gap-4">
             <button
               onClick={() => {
                 getUrl("rockpapershotgun");
               }}
-              className="bg-blue-400 col-span-2  sm:col-span-1 rounded-xl  p-5  hover:bg-slate-600"
+              className="bg-emerald-400 p-5 sm:col-span-2 rounded-xl  sm:p-5  hover:bg-slate-600"
             >
-              Rock Paper Shotgun
+              R.P.S
+            </button>
+            <button
+              onClick={() => {
+                getUrl("ign");
+              }}
+              className="rounded-xl p-5   bg-rose-400    hover:bg-slate-600"
+            >
+              IGN
             </button>
             <button
               onClick={() => {
                 getUrl("destructoid");
               }}
-              className="rounded-xl p-5  col-span-2  sm:col-span-1  bg-slate-800 hover:bg-slate-600"
-            >
-              IGN(not)
-            </button>
-            <button
-              onClick={() => {
-                getUrl("destructoid");
-              }}
-              className="rounded-xl p-5 col-span-2  bg-green-400 hover:bg-slate-600"
+              className="rounded-xl p-5  bg-amber-400 hover:bg-slate-600"
             >
               Destructoid
             </button>
@@ -146,34 +130,17 @@ export default function Home() {
               onClick={() => {
                 getUrl("escapist");
               }}
-              className="rounded-xl p-5 col-span-2 bg-yellow-400  hover:bg-slate-600"
+              className="rounded-xl p-5 sm:col-span-2  bg-sky-400  hover:bg-slate-600"
             >
               The Escapist
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+
+        <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-10">
           <> {finalArticles}</>
         </div>
       </div>
     </>
   );
 }
-
-// const getHref = async (href: string) => {
-//   // const res = await fetch(href).then((res)=>res.json().then((data)=>{setPost(data)})
-//   setHref(href);
-//   setLoading(true);
-//   console.log("href", href);
-// };
-
-// useEffect(() => {
-//   setLoading(true);
-//   fetch(href)
-//     .then((res) => )
-//     .then((data) => {
-//       setPost(data);
-//       setLoading(false);
-//       console.log("post", post);
-//     });
-// }, [href, loading]);
