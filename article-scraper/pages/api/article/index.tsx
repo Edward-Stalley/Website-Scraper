@@ -6,13 +6,16 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
   const html = await response.text();
   const $ = load(html);
 
-  const articles: { title: string; url: string | undefined }[] = [];
+  const articles: { title: string; url: string | undefined; img:string|undefined}[] = [];
   $(".article-default", html).each(function () {
     const title = $(this).find(".post-title").text();
     const url = $(this).find("a").attr("href");
+    const img = $(this).find("post-thumbnail").attr("src");
     articles.push({
       title,
       url,
+      img,
+
     });
   });
   res.status(200).json({ articles });

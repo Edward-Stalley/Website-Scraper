@@ -11,13 +11,15 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
   //       el1: ".summary_items",
   //       el2: ".strapline",
 
-  const articles: { title: string; url: string | undefined }[] = [];
+  const articles: { title: string; url: string | undefined; img:string|undefined }[] = [];
   $(".summary", html).each(function () {
     const title = $(this).find(".strapline").text();
     const url = $(this).find("a").attr("href");
+    const img = $(this).find("img.thumbnail_image").attr("src");
     articles.push({
       title,
       url,
+      img,
     });
   });
 

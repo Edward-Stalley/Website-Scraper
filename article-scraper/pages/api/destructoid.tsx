@@ -11,7 +11,8 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
   $(".article-default", html).each(function () {
     const title = $(this).find(".post-title").text();
     const url = $(this).find("a").attr("href");
-    const img = $(this).find("img").attr("src");
+    const img = $(this).find("a img").attr("src");
+    // const img = "https://assets-prd.ignimgs.com/2023/05/14/totk-shrine-walkthrough-tears-of-the-kingdom-zelda-1684091746410.jpg?crop=16%3A9&width=282%201x,%20https://assets-prd.ignimgs.com/2023/05/14/totk-shrine-walkthrough-tears-of-the-kingdom-zelda-1684091746410.jpg?crop=16%3A9&width=282&dpr=2%202x";
     articles.push({
       title,
       url,
