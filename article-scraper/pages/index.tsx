@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
+import Carousel from "../components/Carousel";
 
 import Article from "../components/ArticleComponent";
 import { useState, useEffect, use } from "react";
@@ -39,6 +40,19 @@ export default function Home() {
   const getArticleBody = async (url: string) => {
     const res = await fetch(`/api/puppeteer/rockpapershotgun`);
   };
+
+  // const items = [
+  //   <div>Item 1</div>,
+  //   <div>Item 2</div>,
+  //   <div>Item 3</div>,
+  //   <div>Item 4</div>,
+  //   <div>Item 5</div>,
+  //   <div>Item 6</div>,
+  //   <div>Item 7</div>,
+  //   <div>Item 8</div>,
+  //   <div>Item 9</div>,
+  //   <div>Item 10</div>,
+  // ];
 
   useEffect(() => {
     const toComponent =
@@ -154,11 +168,16 @@ export default function Home() {
             </button>
           </div>
         </div>
+        <div className="grid  grid-cols-1 sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-1 mt-10">
+        {/* <Carousel items={finalArticles}/> */}
 
-        <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-10">
-          <> {finalArticles}</>
         </div>
+
+        {/* <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-10"> */}
+          <> {finalArticles}</>
+        {/* </div> */}
       </div>
     </>
   );
 }
+
