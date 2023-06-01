@@ -134,7 +134,7 @@ export default function Home() {
               }}
               className="rounded-xl p-5   bg-rose-400    hover:bg-slate-600"
             >
-             Game Informer
+             G.Informer
             </button>
             <button
               onClick={() => {
@@ -142,7 +142,7 @@ export default function Home() {
               }}
               className="rounded-xl p-5  bg-emerald-300 hover:bg-emerald-400"
             >
-              Destructoid
+              DToid
             </button>
             <button
               onClick={() => {
@@ -150,7 +150,7 @@ export default function Home() {
               }}
               className="rounded-xl p-5 sm:col-span-2  bg-sky-300  hover:bg-sky-400"
             >
-              The Escapist
+           Escapist
             </button>
           </div>
         </div>
