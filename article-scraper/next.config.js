@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['assets-prd.ignimgs.com', "assets1.ignimgs.com", 'www.destructoid.com', "www.escapistmagazine.com","assetsio.reedpopcdn.com", "www.gameinformer.com"],
+    domains: ["st4.depositphotos.com",'assets-prd.ignimgs.com', "assets1.ignimgs.com", 'www.destructoid.com', "www.escapistmagazine.com","assetsio.reedpopcdn.com", "www.gameinformer.com"],
 
   },
   async rewrites() {

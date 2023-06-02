@@ -6,12 +6,13 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await fetch("http://www.destructoid.com");
   const html = await response.text();
   const $ = load(html);
+  const noImage = "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg"
 
   const articles: { title: string; url: string | undefined; img: string | undefined }[] = [];
   $(".article-default", html).each(function () {
     const title = $(this).find(".post-title").text();
     const url = $(this).find("a").attr("href");
-    const img = $(this).find("a img").attr("src");
+    const img = $(this).find("a img").attr("src")  || noImage;
     articles.push({
       title,
       url,
