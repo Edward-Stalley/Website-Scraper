@@ -3,7 +3,7 @@ import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 
 import { UrlObject } from "url";
 import cheerio, { load } from "cheerio";
 
-export default function ArticleComponent(props: {
+export default function Article(props: {
   url: string;
   title: string;
   sitename: string;
@@ -17,15 +17,17 @@ export default function ArticleComponent(props: {
   };
 
   return (
-    <div className="flex justify-center items-center p-4 ">
-      <div className="cursor-pointer text-slate-50 pointer-cursor  bg-slate-900 p-5 g-2 text-2sm flex-col flex justify-center items-center w-56 h-64 rounded-xl">
+    <div className="flex justify-center items-center p-5 ">
+      
+      <div className="cursor-pointer text-slate-50 pointer-cursor  bg-slate-900 p-5 g-2 text-2sm flex-col flex justify-center items-center  w-full h-64 rounded-xl">
         <h2 className="text-grey-100 ">{props.title}</h2>
 
-        {/* <h4>{props.id}</h4> */}
-        {/* <button onClick={() => handleClick(props.url)} className="bg-orange-400 p-2 rounded-xl">
-            Read
-          </button> */}
       </div>
     </div>
   );
 }
+
+{/* <h4>{props.id}</h4> */}
+{/* <button onClick={() => handleClick(props.url)} className="bg-orange-400 p-2 rounded-xl">
+    Read
+  </button> */}

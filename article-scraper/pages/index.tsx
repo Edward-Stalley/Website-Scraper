@@ -4,7 +4,7 @@ import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import Carousel from "../components/Carousel";
 import React from "react"
-import Article from "../components/ArticleComponent";
+import Article from "../components/Article";
 import { useState, useEffect, use } from "react";
 import { slice } from "cheerio/lib/api/traversing";
 import cheerio, { load } from "cheerio";
@@ -49,29 +49,30 @@ export default function Home() {
         if (i <= 10) {
           return (
             <div className="" key={a.title.slice(5) + i}>
-            <Link href={a.url} className={styles.articleLink} style={{ backgroundImage: `url(${a.img})` }}>
+            <Link href={a.url} className=" " >
+
+            {/* style={{ backgroundImage: `url(${a.img})` }} */}
 
                 {/* need to get the image and make it the background */}
                 <div className="image-container rounded overflow-hidden">
                   <div className="rounded-t-xl">
 
   <Image src={a.img} alt="Article Image" width={300} height={200} style={{
-      // width: "100%",
-      // height: "100%",
-      // objectFit: "cover",
-      // borderRadius: "0.75rem 0.75rem 0 0",
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: "0.75rem 0.75rem 0 0",
     }} className=" rounded pb-0 px-5 " />
                   </div>
 </div> 
                 <div
-                  className={`  ${a.url.includes("gameinformer") ? "hover:bg-rose-400 bg-rose-200 " : "b-blue-200"}
+                  className={`      
+                   auto-cols-min h-30  justify-center items-center rounded-b-xl ml-5 mr-5 mb-5 
+                  ${a.url.includes("gameinformer") ? "hover:bg-rose-400 bg-rose-200 " : "b-blue-200"}
                   ${a.url.includes("destructoid") ? "hover:bg-emerald-400 bg-emerald-200 " : "b-blue-200"}
                   ${a.url.includes("rockpapershotgun") ? "hover:bg-amber-400 bg-amber-200" : "b-blue-200"}
                   ${a.url.includes("escapist") ? "hover:bg-sky-400 bg-sky-300 " : "b-blue-200"}
-                 
-
-
-                  auto-cols-min h-30  justify-center items-center rounded-b-xl ml-5 mr-5 mb-5  `}
+            `}
                 >
                   <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} />
         
@@ -132,7 +133,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-       <div className="flex w-full max-w-3xl justify-center items-center py-10">
+       <div className="flex sm:w-full w-64 max-w-3xl justify-center items-center py-1 mt-20">
   <div className="w-full h-full max-w-3xl">
     <Carousel items={finalArticles} />
   </div>
