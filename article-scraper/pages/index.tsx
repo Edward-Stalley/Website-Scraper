@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import Carousel from "../components/Carousel";
-
+import React from "react"
 import Article from "../components/ArticleComponent";
 import { useState, useEffect, use } from "react";
 import { slice } from "cheerio/lib/api/traversing";
@@ -41,18 +41,6 @@ export default function Home() {
     const res = await fetch(`/api/puppeteer/rockpapershotgun`);
   };
 
-  // const items = [
-  //   <div>Item 1</div>,
-  //   <div>Item 2</div>,
-  //   <div>Item 3</div>,
-  //   <div>Item 4</div>,
-  //   <div>Item 5</div>,
-  //   <div>Item 6</div>,
-  //   <div>Item 7</div>,
-  //   <div>Item 8</div>,
-  //   <div>Item 9</div>,
-  //   <div>Item 10</div>,
-  // ];
 
   useEffect(() => {
     const toComponent =
@@ -67,7 +55,12 @@ export default function Home() {
                 <div className="image-container rounded overflow-hidden">
                   <div className="rounded-t-xl">
 
-  <Image src={a.img} alt="Article Image" width={300} height={200} className=" rounded pb-0 px-5 " />
+  <Image src={a.img} alt="Article Image" width={300} height={200} style={{
+      // width: "100%",
+      // height: "100%",
+      // objectFit: "cover",
+      // borderRadius: "0.75rem 0.75rem 0 0",
+    }} className=" rounded pb-0 px-5 " />
                   </div>
 </div> 
                 <div
@@ -81,29 +74,7 @@ export default function Home() {
                   auto-cols-min h-30  justify-center items-center rounded-b-xl ml-5 mr-5 mb-5  `}
                 >
                   <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} />
-                  {/* <Link */}
-                  {/* // className="bg-orange-300 text-slate-800 text-xl p-3 rounded-b-xl flex justify-center
-                  hover:bg-orange-400" // href={a.url} */}
-                  {/* > */}
-                  {/* Read */}
-                  {/* </Link> */}
-                  {/* Need to implement getting the body from article */}
-                  {/* 
-                <button
-                  className="bg-orange-500  w-full flex justify-center p-4 rounded-b-xl"
-                  data-key={i}
-                  data-href={a.url}
-                  onClick={() => {
-                    getArticleBody(a.url);
-                  }}
-                >
-                  Handler
-                </button> */}
-                  {/* <div className="flex justify-center    ">
-                    {(a.url.includes("rockpapershotgun") && "Rock Paper Shotgun") ||
-                      (a.url.includes("destructoid") && "Destructoid") ||
-                      (a.url.includes("destructoid") && "Destructoid")}
-                  </div> */}
+        
                 </div>
               </Link>
             </div>
@@ -134,14 +105,7 @@ export default function Home() {
             >
               R.P.S
             </button>
-            {/* <button
-              onClick={() => {
-                getUrl("ign");
-              }}
-              className="rounded-xl p-5   bg-rose-400    hover:bg-slate-600"
-            >
-              IGN
-            </button> */}
+       
             <button
               onClick={() => {
                 getUrl("gameinformer");
@@ -168,16 +132,63 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="grid  grid-cols-1 sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-1 mt-10">
-        {/* <Carousel items={finalArticles}/> */}
+       <div className="flex w-full max-w-3xl justify-center items-center py-10">
+  <div className="w-full h-full max-w-3xl">
+    <Carousel items={finalArticles} />
+  </div>
+</div>
 
         </div>
-
-        {/* <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-10"> */}
-          <> {finalArticles}</>
-        {/* </div> */}
-      </div>
+        
     </>
   );
 }
 
+
+
+// old code
+
+{/* <div className="grid w-100 grid-cols-1 sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-1 mt-10"> */}
+        {/* <Carousel items={finalArticles}/> */}
+          {/* <> {finalArticles}</> */}
+      {/* </div> */}
+
+        {/* <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-10"> */}
+        {/* </div> */}
+
+                  {/* <Link */}
+                  {/* // className="bg-orange-300 text-slate-800 text-xl p-3 rounded-b-xl flex justify-center
+                  hover:bg-orange-400" // href={a.url} */}
+                  {/* > */}
+                  {/* Read */}
+                  {/* </Link> */}
+                  {/* Need to implement getting the body from article */}
+                  {/* 
+                <button
+                  className="bg-orange-500  w-full flex justify-center p-4 rounded-b-xl"
+                  data-key={i}
+                  data-href={a.url}
+                  onClick={() => {
+                    getArticleBody(a.url);
+                  }}
+                >
+                  Handler
+                </button> */}
+                  {/* <div className="flex justify-center    ">
+                    {(a.url.includes("rockpapershotgun") && "Rock Paper Shotgun") ||
+                      (a.url.includes("destructoid") && "Destructoid") ||
+                      (a.url.includes("destructoid") && "Destructoid")}
+                  </div> */}
+
+
+                  // -----------------IGN
+
+
+                       {/* <button
+              onClick={() => {
+                getUrl("ign");
+              }}
+              className="rounded-xl p-5   bg-rose-400    hover:bg-slate-600"
+            >
+              IGN
+            </button> */}

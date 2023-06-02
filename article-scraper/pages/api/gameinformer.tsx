@@ -10,10 +10,10 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
   const articles: { title: string; url: string | undefined; img:string|undefined  }[] = [];
   $(".article-body", html).each(function () {
     const title = $(this).find('.article-title.page-title a').text()
-    const url =  "https://www.gameinformer.com/" + $(this).find("a").attr("href");
+    const url =  "https://www.gameinformer.com" + $(this).find("a").attr("href");
     const style = $(this).find('.article-image').attr('style');
     const imgElement = $(this).find(".article-image");
-    const img = "https://www.gameinformer.com/" + imgElement.attr("data-imgurl");
+    const img = "https://www.gameinformer.com" + imgElement.attr("data-imgurl");
 
       articles.push({
       title,
