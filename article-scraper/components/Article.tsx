@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react";
+import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, useState } from "react";
 import { UrlObject } from "url";
 import cheerio, { load } from "cheerio";
+import Image from "next/image";
 
 export default function Article(props: {
   url: string;
@@ -10,24 +11,67 @@ export default function Article(props: {
   details: string;
   id: number;
   img: string;
+  articleHtml:string
+  articleResponse: string
+  showArticle:boolean
 }) {
+
+  const [showArticle, setShowArticle] = useState(false)
+  
   const handleClick = async function (url: any) {
+    setShowArticle((prevState) => !prevState)
     // const response = await fetch(`http://localhost:3000/api/article/${url}`);
-    console.log(url);
+    console.log(showArticle);
   };
 
   return (
-    <div className="flex justify-center items-center p-5 ">
-      
-      <div className="cursor-pointer text-slate-50 pointer-cursor  bg-slate-900 p-5 g-2 text-2sm flex-col flex justify-center items-center  w-full h-64 rounded-xl">
-        <h2 className="text-grey-100 ">{props.title}</h2>
+<div className="  ">
+    <div 
+    className={`      
+auto-cols-min h-30  justify-center items-center rounded-xl ml-5 mr-5 mb-5 
+   ${props.url.includes("gameinformer") ? "hover:bg-rose-400 bg-rose-200 " : "b-blue-200"}
+   ${props.url.includes("destructoid") ? "hover:bg-emerald-400 bg-emerald-400 " : "b-blue-200"}
+   ${props.url.includes("rockpapershotgun") ? "hover:bg-amber-400 bg-amber-200" : "b-blue-200"}
+   ${props.url.includes("escapist") ? "hover:bg-sky-400 bg-sky-300 " : "b-blue-200"}
+      `}>
+  
+  <Image src={props.img} alt="Article Image" width={100} height={100} style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: "0.75rem 0.75rem 0 0",
+    }} className=" rounded-xl  " />    
 
-      </div>
+  <h1 className="p-5 font-bold text-slate-800 ">{props.title}</h1>
+     
+    
+    <button onClick={handleClick} className={`
+  ${props.url.includes("destructoid") ? "hover:bg-emerald-200 bg-emerald-100 " : "b-blue-200"}
+     p-2 w-full
+    ${showArticle? "": "rounded-b-xl"}
+    
+    
+    `  
+  
+  }>{showArticle ? "Hide":"Read"}</button>
+    {showArticle && <div className="text-slate-900 text-xl p-5">{props.articleHtml}</div>}
+
     </div>
-  );
+    </div>
+  )
 }
 
-{/* <h4>{props.id}</h4> */}
-{/* <button onClick={() => handleClick(props.url)} className="bg-orange-400 p-2 rounded-xl">
-    Read
-  </button> */}
+// old styling
+
+{/* <div className="flex justify-center items-center p-5 ">
+      
+<div className="cursor-pointer text-slate-50 pointer-cursor  bg-slate-900 p-5 g-2 text-2sm flex-col flex justify-center items-center  w-full h-64 rounded-xl">
+  <h2 className="text-grey-100 ">{props.title}</h2>
+  <button onClick={handleClick} className="bg-orange-400 p-2 rounded-xl">
+Read
+</button>
+
+</div>
+        {showArticle && <div>{props.articleHtml}</div> }
+</div> */}
+

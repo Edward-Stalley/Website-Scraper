@@ -20,6 +20,7 @@ export default function Home() {
   const [href, setHref] = useState("");
   const [post, setPost] = useState("");
   const [loading, setLoading] = useState(false);
+  // const[showArticle, setShowArticle] = useState(false)
   // const [urls, setUrls] = useState<Object>([]);
 
   const getUrl = async (url: string) => {
@@ -49,20 +50,34 @@ export default function Home() {
         if (i <= 10) {
           return (
             <div className="" key={a.title.slice(5) + i}>
+{/* tetsing new feature for retireving article text 
+Want to add
+
+1.  book icon for reading 
+2. + icon for bookmarking
+3. functionality on click - show/hide/save*/}
+
+{/* <button onClick={()=>setShowArticle(!showArticle)} className="bg-emerald-200 p-3 m-1">Read Article</button> */}
+{/* <button className="bg-green-100 p-3 m-1">Add Article</button> */}
+<Article showArticle={a.showArticle} title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} articleHtml={a.articleHtml} articleResponse={a.articleResponse} />
+
             <Link href={a.url} className=" " >
+
+
+              {/* <div>{a.articleHtml}</div> */}
 
             {/* style={{ backgroundImage: `url(${a.img})` }} */}
 
                 {/* need to get the image and make it the background */}
                 <div className="image-container rounded overflow-hidden">
                   <div className="rounded-t-xl">
-
+{/* 
   <Image src={a.img} alt="Article Image" width={300} height={200} style={{
       width: "100%",
       height: "100%",
       objectFit: "cover",
       borderRadius: "0.75rem 0.75rem 0 0",
-    }} className=" rounded pb-0 px-5 " />
+    }} className=" rounded pb-0 px-5 " /> */}
                   </div>
 </div> 
                 <div
@@ -74,7 +89,6 @@ export default function Home() {
                   ${a.url.includes("escapist") ? "hover:bg-sky-400 bg-sky-300 " : "b-blue-200"}
             `}
                 >
-                  <Article title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} />
         
                 </div>
               </Link>
