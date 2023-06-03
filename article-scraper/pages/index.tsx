@@ -87,7 +87,7 @@ Want to add
 
 {/* <button onClick={()=>setShowArticle(!showArticle)} className="bg-emerald-200 p-3 m-1">Read Article</button> */}
 {/* <button className="bg-green-100 p-3 m-1">Add Article</button> */}
-<Article showArticle={a.showArticle} title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} articleHtml={a.articleHtml} articleResponse={a.articleResponse} />
+<Article articleImg={a.articleImg} showArticle={a.showArticle} title={a.title} url={a.url} sitename={a.sitename} details={a.details} id={i} img={a.img} articleHtml={a.articleHtml} articleResponse={a.articleResponse} />
 
             <Link href={a.url} className=" " >
 
