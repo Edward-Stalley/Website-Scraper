@@ -13,3 +13,41 @@
     border-radius: 10px 10px 0 0;
     
   } */
+
+
+  .destructoid {
+/* color:bg-emerald-400; */
+color: #4ade80;
+fill: #bbf7d0;
+
+  }
+
+  .destructoid:hover{
+/* color: bg-emerald-200; */
+
+color: blueviolet;
+  }
+
+
+  .escapist {
+    /* color:bg-emerald-400; */
+    color: #38bdf8;
+    fill: #bae6fd;
+    
+      }
+
+      .gameInformer{
+        color:#fb7185;
+        fill: #fecdd3;
+      }
+
+
+      .rps{
+        color:#fbbf24;
+        fill: #fde68a ;
+      }
+
+      /* {props.url.includes("gameinformer") ? "hover:bg-rose-400 bg-rose-200 " : "b-blue-200"}
+   ${destructoid}
+   ${props.url.includes("rockpapershotgun") ? "hover:bg-amber-400 bg-amber-200" : "b-blue-200"}
+   ${props.url.includes("escapist") ? "hover:bg-sky-400 bg-sky-300 " : "b-blue-200"} */
