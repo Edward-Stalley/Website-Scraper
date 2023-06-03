@@ -42,7 +42,7 @@ auto-cols-min h-30  justify-center  items-center rounded-xl ml-5 mr-5 mb-5
    ${props.url.includes("escapist") ? "hover:bg-sky-400 bg-sky-300 " : "b-blue-200"}
       `}>
   
-  <Image src={props.url.includes("destructoid") ? props.articleImg: props.img} alt="Article Image" width={600} height={600} style={{
+  <Image src={props.url.includes("destructoid") ? props.articleImg: props.img} alt="Article Image" width={200} height={200} style={{
       width: "100%",
       height: "100%",
       objectFit: "cover",
