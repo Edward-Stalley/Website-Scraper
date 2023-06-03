@@ -20,6 +20,10 @@ export default function Article(props: {
   const [showArticle, setShowArticle] = useState(false)
   const destructoid = props.url.includes("destructoid") ? "hover:bg-emerald-400 bg-emerald-400 " : "b-blue-200"
   const handleClick = async function (url: any) {
+
+    // Add a feature so that when I click read it fetches a specific article
+
+
     setShowArticle((prevState) => !prevState)
     // const response = await fetch(`http://localhost:3000/api/article/${url}`);
     console.log(showArticle);

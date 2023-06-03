@@ -34,6 +34,9 @@
 
 // new code
 
+    // Add a feature so that when I click read it fetches a specific article
+
+
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Cheerio, load } from "cheerio";
 import fetch from "node-fetch";
@@ -65,12 +68,10 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
       const articleResponse = await fetch(url);
       const articleHtml = await articleResponse.text();
       const article$ = load(articleHtml);
-      // const articleImg =  article$(".post-thumbnail img").attr("src") || noImage
-      // const articleImg =  "https://www.destructoid.com/wp-content/uploads/2023/06/Everybody12Switch_Lead_060223.jpg"
 
 
       // Extract additional information from the article page
-      const content = article$(".entry-content p").text();
+      const content = article$("p").text();
       const articleImg = article$(".post-thumbnail img").attr("src") || noImage;
 
       articles.push({
@@ -78,10 +79,10 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
         url,
         img,
         articleHtml: content,
-       articleImg: articleImg,
+       articleImg,
       });
     }
-  }
+    }
 
   res.status(200).json({ articles });
 };

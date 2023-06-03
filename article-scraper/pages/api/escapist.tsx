@@ -13,7 +13,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
     url: string | undefined;
     img: string | undefined;
     articleHtml: string | undefined;
-    articleImg:string | undefined;
+    // articleImg:string | undefined;
   }[] = [];
 
   const articleElements = $(".list-item");
@@ -33,7 +33,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
 
       // Extract additional information from the article page
       const content = article$(".entry-content p").text();
-      const articleImg = article$(".post-thumbnail img").attr("src") || noImage;
+      // const articleImg = article$(".post-thumbnail img").attr("src") || noImage;
 
     
 
@@ -42,7 +42,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
       url,
       img,
       articleHtml:content,
-      articleImg:articleImg,
+      // articleImg,
     });
   }};
   res.status(200).json({ articles });
