@@ -35,7 +35,7 @@ export default function Article(props: {
 
     <div 
     className={`      
-auto-cols-min h-30  justify-center items-center rounded-xl ml-5 mr-5 mb-5 
+auto-cols-min h-30  justify-center  items-center rounded-xl ml-5 mr-5 mb-5 
    ${props.url.includes("gameinformer") ? "hover:bg-rose-400 bg-rose-200 " : "b-blue-200"}
    ${destructoid}
    ${props.url.includes("rockpapershotgun") ? "hover:bg-amber-400 bg-amber-200" : "b-blue-200"}
@@ -46,7 +46,7 @@ auto-cols-min h-30  justify-center items-center rounded-xl ml-5 mr-5 mb-5
       width: "100%",
       height: "100%",
       objectFit: "cover",
-      borderRadius: "0.75rem 0.75rem 0 0",
+      borderRadius: ".5rem 0.5rem 0 0",
     }} className=" rounded-xl  " />    
 <div className="flex-row ">
   <div className="flex justify-between" >
