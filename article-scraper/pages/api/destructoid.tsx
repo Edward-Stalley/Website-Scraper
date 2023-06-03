@@ -46,6 +46,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
     url: string | undefined;
     img: string | undefined;
     articleHtml: string | undefined;
+    articleImg:string | undefined;
   }[] = [];
 
   const articleElements = $(".article-default");
@@ -60,6 +61,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
       const articleResponse = await fetch(url);
       const articleHtml = await articleResponse.text();
       const article$ = load(articleHtml);
+      const articleImg =  article$(".post-thumbnail").attr("src")
 
       // Extract additional information from the article page
       const content = article$(".entry-content p").text();
@@ -69,6 +71,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
         url,
         img,
         articleHtml: content,
+        articleImg,
       });
     }
   }

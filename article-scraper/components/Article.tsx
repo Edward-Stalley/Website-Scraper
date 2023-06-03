@@ -14,6 +14,7 @@ export default function Article(props: {
   articleHtml:string
   articleResponse: string
   showArticle:boolean
+  articleImg:string
 }) {
 
   const [showArticle, setShowArticle] = useState(false)
@@ -41,13 +42,13 @@ auto-cols-min h-30  justify-center items-center rounded-xl ml-5 mr-5 mb-5
    ${props.url.includes("escapist") ? "hover:bg-sky-400 bg-sky-300 " : "b-blue-200"}
       `}>
   
-  <Image src={props.img} alt="Article Image" width={100} height={100} style={{
+  <Image src={props.url.includes("destructoid") ? props.articleImg : props.img} alt="Article Image" width={100} height={100} style={{
       width: "100%",
       height: "100%",
       objectFit: "cover",
       borderRadius: "0.75rem 0.75rem 0 0",
     }} className=" rounded-xl  " />    
-<div className="flex-row">
+<div className="flex-row ">
   <div className="flex justify-between" >
   <div className="flex p-2 justify-start  ">
 <button className="flex  items-center justify-center h-8 w-8 hover:text-slate-300 font-semibold text-slate-800 ">&#43;</button>
@@ -58,7 +59,7 @@ auto-cols-min h-30  justify-center items-center rounded-xl ml-5 mr-5 mb-5
   </div>
 
 
-  <h1 className="p-5 font-bold text-slate-800 ">{props.title}</h1>
+  <h1 className="flex justify-center p-5 font-bold text-slate-800  ">{props.title}</h1>
 </div>
      
     
@@ -77,18 +78,4 @@ auto-cols-min h-30  justify-center items-center rounded-xl ml-5 mr-5 mb-5
     </div>
   )
 }
-
-// old styling
-
-{/* <div className="flex justify-center items-center p-5 ">
-      
-<div className="cursor-pointer text-slate-50 pointer-cursor  bg-slate-900 p-5 g-2 text-2sm flex-col flex justify-center items-center  w-full h-64 rounded-xl">
-  <h2 className="text-grey-100 ">{props.title}</h2>
-  <button onClick={handleClick} className="bg-orange-400 p-2 rounded-xl">
-Read
-</button>
-
-</div>
-        {showArticle && <div>{props.articleHtml}</div> }
-</div> */}
 
