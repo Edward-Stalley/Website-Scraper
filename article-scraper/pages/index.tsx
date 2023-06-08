@@ -1,23 +1,20 @@
-// import Head from "next/head";
-// import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import Carousel from "../components/Carousel";
 import React, { ReactElement } from "react";
 import Article from "../components/Article";
 import { useState, useEffect } from "react";
-// import cheerio, { load } from "cheerio";
 // import { NextApiRequest, NextApiResponse } from "next/dist/shared/lib/utils";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [retrievedArticles, setRetrievedArticles] = useState<Object>([]);
   const [finalArticles, setFinalArticles] = useState<Object>([]);
   const [fetched, setFetched] = useState(false);
-  const [href, setHref] = useState("");
-  const [post, setPost] = useState("");
+  // const [href, setHref] = useState("");
+  // const [post, setPost] = useState("");
   const [loading, setLoading] = useState(false);
   const [isDestructoid, setIsDestructoid] = useState(false);
   const [isEscapist, setIsEscapist] = useState(false);
@@ -62,16 +59,6 @@ export default function Home() {
     return `styles.${site}`;
   };
 
-  // Want to add
-
-  // 4. functionality for bookmarking [work in progress]
-  //  TODO need this to save even when I leave the page and restore it
-
-  // 1.  book icon for reading
-  // 2. + icon for bookmarking [done] !!
-  // 3. functionality on click - show/hide [done]
-  // 5. color coded - loading button [done]
-
   useEffect(() => {
     const toComponent =
       Array.isArray(retrievedArticles) &&
@@ -105,12 +92,6 @@ export default function Home() {
         if (i <= 10) {
           return (
             <div className="" key={a.title.slice(5) + i}>
-              {/* tetsing new feature for retireving article text 
-
-*/}
-
-              {/* <button onClick={()=>setShowArticle(!showArticle)} className="bg-emerald-200 p-3 m-1">Read Article</button> */}
-              {/* <button className="bg-green-100 p-3 m-1">Add Article</button> */}
               <Article
                 articleImg={a.articleImg}
                 showArticle={a.showArticle}
@@ -127,21 +108,8 @@ export default function Home() {
               />
 
               <Link href={a.url} className=" ">
-                {/* <div>{a.articleHtml}</div> */}
-
-                {/* style={{ backgroundImage: `url(${a.img})` }} */}
-
-                {/* need to get the image and make it the background */}
                 <div className="image-container rounded overflow-hidden">
-                  <div className="rounded-t-xl">
-                    {/* 
-  <Image src={a.img} alt="Article Image" width={300} height={200} style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      borderRadius: "0.75rem 0.75rem 0 0",
-    }} className=" rounded pb-0 px-5 " /> */}
-                  </div>
+                  <div className="rounded-t-xl"></div>
                 </div>
               </Link>
             </div>
@@ -282,8 +250,3 @@ export default function Home() {
               IGN
             </button> */
 }
-
-// symbol codes
-
-// &#9734; empty star
-// &#9733; filled star

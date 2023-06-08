@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, useState, MouseEventHandler } from "react";
-import { UrlObject } from "url";
-import cheerio, { load } from "cheerio";
+import { useState, MouseEventHandler } from "react";
+// import { UrlObject } from "url";
+// import cheerio, { load } from "cheerio";
 import Image from "next/image";
 
 export default function Article(props: {
