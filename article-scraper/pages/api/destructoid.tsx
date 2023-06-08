@@ -34,8 +34,7 @@
 
 // new code
 
-    // Add a feature so that when I click read it fetches a specific article
-
+// Add a feature so that when I click read it fetches a specific article
 
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Cheerio, load } from "cheerio";
@@ -53,7 +52,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
     url: string | undefined;
     img: string | undefined;
     articleHtml: string | undefined;
-    articleImg:string | undefined;
+    articleImg: string | undefined;
   }[] = [];
 
   const articleElements = $(".article-default");
@@ -69,7 +68,6 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
       const articleHtml = await articleResponse.text();
       const article$ = load(articleHtml);
 
-
       // Extract additional information from the article page
       const content = article$("p").text();
       const articleImg = article$(".post-thumbnail img").attr("src") || noImage;
@@ -79,10 +77,10 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
         url,
         img,
         articleHtml: content,
-       articleImg,
+        articleImg,
       });
     }
-    }
+  }
 
   res.status(200).json({ articles });
 };

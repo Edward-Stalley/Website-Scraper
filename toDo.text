@@ -1,5 +1,12 @@
 1. game informer won't load articles
 2. very slow - need to change it so I load article on button press - not all articles at once
 3. add bookmarking
+      // 1.  book icon for reading
+          // 2. + icon for bookmarking [done] !!
+               // 3. functionality on click - show/hide [done]
+
+
+
 4 .make the artciles more readable - too narrow right now
 5. change the color on Read button for 3 of the sites
+6. color coded - loading button [done]

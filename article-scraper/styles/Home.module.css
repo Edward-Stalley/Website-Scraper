@@ -1,10 +1,10 @@
 .articleLink {
-    /* background-size: cover; */
-    /* background-position: center; */
-    /* background-repeat: no-repeat; */
-  }
-  
-  /* .image-container {
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+}
+
+/* .image-container {
     overflow: hidden;
     border-radius: 10px;
   }
@@ -14,30 +14,24 @@
     
   } */
 
-
 .destructoid {
-/* color:bg-emerald-400; */
-color: #4ade80;
-fill: #bbf7d0;
+  /* color:bg-emerald-400; */
+  color: #4ade80;
+  fill: #bbf7d0;
+}
 
-  }
+.escapist {
+  /* color:bg-emerald-400; */
+  color: #38bdf8;
+  fill: #bae6fd;
+}
 
+.gameInformer {
+  color: #fb7185;
+  fill: #fecdd3;
+}
 
-  .escapist {
-    /* color:bg-emerald-400; */
-    color: #38bdf8;
-    fill: #bae6fd;
-    
-      }
-
-.gameInformer{
-        color:#fb7185;
-        fill: #fecdd3;
-      }
-
-
-.rps{
-   color:#fbbf24;
-  fill: #fde68a ;
-      }
-
+.rps {
+  color: #fbbf24;
+  fill: #fde68a;
+}

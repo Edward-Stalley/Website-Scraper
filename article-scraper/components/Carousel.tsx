@@ -9,11 +9,20 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ items, maxItems = 10 }) => {
+  let slidesToShow = 3;
+
+  if (items.length === 1) {
+    slidesToShow = 1;
+  } else if (items.length === 2) {
+    slidesToShow = 2;
+  }
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    // slidesToShow: 3,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
     responsive: [
       {
@@ -30,9 +39,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, maxItems = 10 }) => {
   return (
     <Slider {...settings} className="">
       {limitedItems.length > 0 &&
-        limitedItems.map((item: React.ReactNode, index: number) => (
-          <div key={index}>{item}</div>
-        ))}
+        limitedItems.map((item: React.ReactNode, index: number) => <div key={index}>{item}</div>)}
     </Slider>
   );
 };
