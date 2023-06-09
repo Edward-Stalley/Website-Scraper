@@ -57,7 +57,14 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
   }[] = [];
 
   const articleElements = $(".article-default");
+  const limit = 10;
+  let counter = 0;
+
   for (let i = 0; i < articleElements.length; i++) {
+    if (counter >= limit) {
+      break;
+    }
+
     const articleElement = articleElements[i];
     const title = $(articleElement).find(".post-title").text();
     const url = $(articleElement).find("a").attr("href");
@@ -79,6 +86,8 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
         articleHtml: content,
         articleImg,
       });
+
+      counter++;
     }
   }
 
