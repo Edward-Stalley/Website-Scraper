@@ -101,28 +101,28 @@ export default function Home() {
         );
         if (i <= 10) {
           return (
-            // <div className="" key={a.title.slice(5) + i}>
-            <Article
-              articleImg={a.articleImg}
-              showArticle={a.showArticle}
-              title={a.title}
-              url={a.url}
-              sitename={a.sitename}
-              details={a.details}
-              id={i}
-              img={a.img}
-              articleHtml={a.articleHtml}
-              articleResponse={a.articleResponse}
-              handleBookmark={bookmarkHandler}
-              bookmarked={a.bookmarked}
-            />
-
-            //   <Link href={a.url} className=" ">
+            <div className="" key={a.title.slice(5) + i}>
+              <Article
+                articleImg={a.articleImg}
+                showArticle={a.showArticle}
+                title={a.title}
+                url={a.url}
+                sitename={a.sitename}
+                details={a.details}
+                id={i}
+                img={a.img}
+                articleHtml={a.articleHtml}
+                articleResponse={a.articleResponse}
+                handleBookmark={bookmarkHandler}
+                bookmarked={a.bookmarked}
+              />
+              {/* //   <Link href={a.url} className=" ">
             //     <div className="image-container rounded overflow-hidden">
             //       <div className="rounded-t-xl"></div>
             //     </div>
-            //   </Link>
-            // </div>
+            //   </Link> */}
+              //{" "}
+            </div>
           );
         }
         if (i > 10) return;
