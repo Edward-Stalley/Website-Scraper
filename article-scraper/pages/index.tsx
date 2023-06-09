@@ -40,13 +40,13 @@ export default function Home() {
     console.log(loading);
   };
 
-  const urls: any[] = [];
-  const url = Array.isArray(retrievedArticles) ? retrievedArticles.forEach((a: any) => urls.push(a.url)) : [];
+  // const urls: any[] = [];
+  // const url = Array.isArray(retrievedArticles) ? retrievedArticles.forEach((a: any) => urls.push(a.url)) : [];
 
-  const handler = function (e: { target: any }) {
-    const href = e.target.getAttribute("data-href");
-    setHref(href);
-  };
+  // const handler = function (e: { target: any }) {
+  //   const href = e.target.getAttribute("data-href");
+  //   setHref(href);
+  // };
 
   const [bookmarked, setBookmarked] = useState(false);
 
@@ -60,14 +60,46 @@ export default function Home() {
   };
 
   useEffect(() => {
+    console.log(savedArticles);
+
     const toComponent =
       Array.isArray(retrievedArticles) &&
       retrievedArticles.map((a, i) => {
         // BOOKMARK FUNCTIONALITY
-        // -------- Im not entirely sure this is the right place for this function
 
-        const bookmarkHandler = function () {
-          const savedArticle = (
+        const bookmarkHandler = function (url: string) {
+          // setBookmarked(true);
+          retrievedArticles.map((a) => {
+            if (a.url === url) {
+              return {
+                ...a,
+                bookmarked: !a.bookmarked,
+              };
+            }
+            return a;
+          });
+          setSavedArticles((prevArticles) => [...prevArticles, savedArticle]);
+        };
+
+        const savedArticle = (
+          <Article
+            articleImg={a.articleImg}
+            showArticle={a.showArticle}
+            title={a.title}
+            url={a.url}
+            sitename={a.sitename}
+            details={a.details}
+            id={a.id}
+            img={a.img}
+            articleHtml={a.articleHtml}
+            articleResponse={a.articleResponse}
+            handleBookmark={() => bookmarkHandler(a.url)}
+            bookmarked={a.bookmarked}
+          />
+        );
+        if (i <= 10) {
+          return (
+            // <div className="" key={a.title.slice(5) + i}>
             <Article
               articleImg={a.articleImg}
               showArticle={a.showArticle}
@@ -75,52 +107,29 @@ export default function Home() {
               url={a.url}
               sitename={a.sitename}
               details={a.details}
-              id={a.id}
+              id={i}
               img={a.img}
               articleHtml={a.articleHtml}
               articleResponse={a.articleResponse}
               handleBookmark={bookmarkHandler}
-              isBookmarked={bookmarked}
+              bookmarked={a.bookmarked}
             />
-          );
 
-          setSavedArticles((prevArticles) => [...prevArticles, savedArticle]);
-          a.bookmarked;
-          console.log("saved", savedArticles);
-        };
-
-        if (i <= 10) {
-          return (
-            <div className="" key={a.title.slice(5) + i}>
-              <Article
-                articleImg={a.articleImg}
-                showArticle={a.showArticle}
-                title={a.title}
-                url={a.url}
-                sitename={a.sitename}
-                details={a.details}
-                id={i}
-                img={a.img}
-                articleHtml={a.articleHtml}
-                articleResponse={a.articleResponse}
-                handleBookmark={bookmarkHandler}
-                isBookmarked={a.bookmarked}
-              />
-
-              <Link href={a.url} className=" ">
-                <div className="image-container rounded overflow-hidden">
-                  <div className="rounded-t-xl"></div>
-                </div>
-              </Link>
-            </div>
+            //   <Link href={a.url} className=" ">
+            //     <div className="image-container rounded overflow-hidden">
+            //       <div className="rounded-t-xl"></div>
+            //     </div>
+            //   </Link>
+            // </div>
           );
         }
         if (i > 10) return;
       });
 
     setFinalArticles(toComponent);
-  }, [fetched, retrievedArticles]);
+  }, [fetched, retrievedArticles, savedArticles]);
 
+  console.log("saved", savedArticles, "final", finalArticles);
   return (
     <>
       <div className="bg-slate-800 justify-center items-center p-20 flex flex-col">

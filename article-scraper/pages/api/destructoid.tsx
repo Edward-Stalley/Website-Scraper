@@ -39,6 +39,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Cheerio, load } from "cheerio";
 import fetch from "node-fetch";
+import { useState } from "react";
 
 const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await fetch("http://www.destructoid.com");
@@ -53,15 +54,16 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
     img: string | undefined;
     articleHtml: string | undefined;
     articleImg: string | undefined;
+    // bookmarked: boolean;
   }[] = [];
 
+  const [bookmarked, setBookmarked] = useState(false);
   const articleElements = $(".article-default");
   for (let i = 0; i < articleElements.length; i++) {
     const articleElement = articleElements[i];
     const title = $(articleElement).find(".post-title").text();
     const url = $(articleElement).find("a").attr("href");
     const img = $(articleElement).find("a img").attr("src") || noImage;
-
     if (url) {
       // Go deeper into the article page to fetch additional data
       const articleResponse = await fetch(url);
@@ -78,6 +80,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
         img,
         articleHtml: content,
         articleImg,
+        // bookmarked: bookmarked,
       });
     }
   }

@@ -5,6 +5,7 @@ import { useState, MouseEventHandler } from "react";
 import Image from "next/image";
 
 export default function Article(props: {
+  handleBookmark(url: string): unknown;
   url: string;
   title: string;
   sitename: string;
@@ -15,11 +16,12 @@ export default function Article(props: {
   articleResponse: string;
   showArticle: boolean;
   articleImg: string;
-  handleBookmark: MouseEventHandler<HTMLButtonElement> | undefined;
-  isBookmarked: boolean;
+  // handleBookmark: MouseEventHandler<HTMLButtonElement>;
+  bookmarked: boolean;
 }) {
   const [showArticle, setShowArticle] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
+  // const [bookmarked, setBookmarked] = useState(props.bookmarked);
+  // const [bookmarked, setBookmarked] = useState(false);
 
   const destructoid = props.url.includes("destructoid") ? "hover:bg-emerald-400 bg-emerald-400 " : "b-blue-200";
   const handleClick = async function (url: any) {
@@ -27,11 +29,15 @@ export default function Article(props: {
 
     setShowArticle((prevState) => !prevState);
     // const response = await fetch(`http://localhost:3000/api/article/${url}`);
-    console.log(showArticle);
   };
 
+  // const handleBookmark = function () {
+  //   setBookmarked(!bookmarked);
+  //   console.log(bookmarked);
+  // };
+
   return (
-    <div className="  ">
+    <div>
       <div
         className={`      
 auto-cols-min h-30  justify-center  items-center rounded-xl ml-5 mr-5 mb-5 
@@ -59,10 +65,14 @@ auto-cols-min h-30  justify-center  items-center rounded-xl ml-5 mr-5 mb-5
             <div className="flex p-2 justify-start  ">
               {/* Bookmark Button */}
               <button
-                onClick={props.handleBookmark}
+                onClick={() => {
+                  props.handleBookmark(props.url);
+                }}
                 className="flex  items-center justify-center h-8 w-8 hover:text-slate-300 font-semibold text-slate-800 "
               >
-                {bookmarked ? <p>&#9733; </p> : <p>&#9734;</p>}
+                {/* <p>&#9734;</p> */}
+                {/* this code doesnt work currently */}
+                {!props.bookmarked ? <p>&#9733; </p> : <p>&#9734;</p>}
               </button>
             </div>
             <div className="flex  p-2 justify-end   ">
