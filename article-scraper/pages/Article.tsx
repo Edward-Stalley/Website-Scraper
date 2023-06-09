@@ -1,14 +1,6 @@
 import Link from "next/link";
-import { ReactMouseEvent } from "react";
-import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactFragment,
-  ReactPortal,
-  useState,
-  MouseEventHandler,
-  MouseEvent,
-} from "react";
+import { MouseEvent } from "react";
+import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, useState, MouseEventHandler } from "react";
 import { UrlObject } from "url";
 import cheerio, { load } from "cheerio";
 import Image from "next/image";
