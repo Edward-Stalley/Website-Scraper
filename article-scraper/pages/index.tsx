@@ -101,7 +101,8 @@ export default function Home() {
         );
         if (i <= 10) {
           return (
-            <div className="" key={a.title.slice(5) + i}>
+            <div key={a.id}>
+              {/* // <div key={a.title.slice(5) + i}> */}
               <Article
                 articleImg={a.articleImg}
                 showArticle={a.showArticle}
@@ -109,7 +110,7 @@ export default function Home() {
                 url={a.url}
                 sitename={a.sitename}
                 details={a.details}
-                id={i}
+                id={a.id}
                 img={a.img}
                 articleHtml={a.articleHtml}
                 articleResponse={a.articleResponse}
@@ -125,9 +126,8 @@ export default function Home() {
             </div>
           );
         }
-        if (i > 10) return;
+        // if (i > 10) return;
       });
-
     setFinalArticles(toComponent);
   }, [fetched, retrievedArticles, savedArticles]);
 

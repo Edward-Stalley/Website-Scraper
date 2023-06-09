@@ -33,3 +33,6 @@ problem list
 1) the state is not logged to each indivdual component as of now
 2) I don't know where to have the function for the bookmarkHandler
 3) it gives me doubles
+
+Just in case this is causing issues down the line - 
+I renamed the Article component in pages to Article.txt

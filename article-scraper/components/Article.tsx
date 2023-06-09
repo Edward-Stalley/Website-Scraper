@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState, MouseEventHandler } from "react";
+import { useState, MouseEventHandler, useEffect } from "react";
 // import { UrlObject } from "url";
 // import cheerio, { load } from "cheerio";
 import Image from "next/image";
@@ -23,8 +23,9 @@ export default function Article(props: {
   // const [bookmarked, setBookmarked] = useState(props.bookmarked);
   // const [bookmarked, setBookmarked] = useState(false);
 
-  const destructoid = props.url.includes("destructoid") ? "hover:bg-emerald-400 bg-emerald-400 " : "b-blue-200";
-  const handleClick = async function (url: any) {
+  const destructoid =
+    props.url && props.url.includes("destructoid") ? "hover:bg-emerald-400 bg-emerald-400 " : "b-blue-200";
+  const handleClick = async function () {
     // Add a feature so that when I click read it fetches a specific article
 
     setShowArticle((prevState) => !prevState);

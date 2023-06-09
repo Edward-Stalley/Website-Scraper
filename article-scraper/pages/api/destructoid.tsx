@@ -49,6 +49,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
     "https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg";
 
   const articles: {
+    id: string;
     title: string;
     url: string | undefined;
     img: string | undefined;
@@ -66,6 +67,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const articleElement = articleElements[i];
+    const id = $(articleElement).find(".post-title").text() + "id";
     const title = $(articleElement).find(".post-title").text();
     const url = $(articleElement).find("a").attr("href");
     const img = $(articleElement).find("a img").attr("src") || noImage;
@@ -80,6 +82,7 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
       const articleImg = article$(".post-thumbnail img").attr("src") || noImage;
 
       articles.push({
+        id,
         title,
         url,
         img,
