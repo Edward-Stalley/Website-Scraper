@@ -68,17 +68,19 @@ export default function Home() {
         // BOOKMARK FUNCTIONALITY
 
         const bookmarkHandler = function (url: string) {
-          // setBookmarked(true);
-          retrievedArticles.map((a) => {
-            if (a.url === url) {
-              return {
-                ...a,
-                bookmarked: !a.bookmarked,
-              };
+          setSavedArticles((prevArticles) => {
+            // Check if the savedArticle already exists in prevArticles
+            const isDuplicate = prevArticles.some((article) => article.props.url === url);
+
+            // If it's a duplicate, remove the savedArticle from the previous articles array
+            if (isDuplicate) {
+              const updatedArticles = prevArticles.filter((article) => article.props.url !== url);
+              return updatedArticles;
             }
-            return a;
+
+            // If it's not a duplicate, add the savedArticle to the previous articles array
+            return [...prevArticles, savedArticle];
           });
-          setSavedArticles((prevArticles) => [...prevArticles, savedArticle]);
         };
 
         const savedArticle = (

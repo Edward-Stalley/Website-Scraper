@@ -54,10 +54,8 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
     img: string | undefined;
     articleHtml: string | undefined;
     articleImg: string | undefined;
-    // bookmarked: boolean;
   }[] = [];
 
-  const [bookmarked, setBookmarked] = useState(false);
   const articleElements = $(".article-default");
   for (let i = 0; i < articleElements.length; i++) {
     const articleElement = articleElements[i];
@@ -80,7 +78,6 @@ const getArticles = async (req: NextApiRequest, res: NextApiResponse) => {
         img,
         articleHtml: content,
         articleImg,
-        // bookmarked: bookmarked,
       });
     }
   }

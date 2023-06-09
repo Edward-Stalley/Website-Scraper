@@ -10,3 +10,26 @@
 4 .make the artciles more readable - too narrow right now
 5. change the color on Read button for 3 of the sites
 6. color coded - loading button [done]
+
+
+
+
+bookmark functionality
+
+1)I have an <Article> 
+2)RetrievedArticles takes the data from the sites
+3)RetrievedArticles then adds this data to the <Article> component
+4)Then, it creates an array with  setFinalArticles
+5)The App displays finalArticles in the Carousel component
+
+What I want
+
+1) Create a new Array of bookmarked Article components - starts empty
+2) When I click the bookmark button - pushes that article to the bookmark array
+3) When I click it again - removes the article from the bookmark array
+
+problem list
+
+1) the state is not logged to each indivdual component as of now
+2) I don't know where to have the function for the bookmarkHandler
+3) it gives me doubles
